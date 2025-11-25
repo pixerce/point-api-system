@@ -1,0 +1,4 @@
+com/point/system/application/PointPolicyDbCacheServiceTest.class
+com/point/system/PointSystemApplicationTests.class
+com/point/system/application/port/input/controller/PointApiControllerTest.class
+com/point/system/domain/PointDomainServiceTest.class

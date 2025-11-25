@@ -1,0 +1,41 @@
+-------------------------------------------------------------------------------
+Test set: com.point.system.domain.PointDomainServiceTest
+-------------------------------------------------------------------------------
+Tests run: 8, Failures: 1, Errors: 1, Skipped: 0, Time elapsed: 0.204 s <<< FAILURE! -- in com.point.system.domain.PointDomainServiceTest
+com.point.system.domain.PointDomainServiceTest.cancelOrder_fail_cancel_amount_error -- Time elapsed: 0.005 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 취소 가능 금액 오류 예외가 발생 ==> Unexpected exception type thrown, expected: <com.point.system.domain.exception.DomainException> but was: <java.lang.NullPointerException>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:39)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3153)
+	at com.point.system.domain.PointDomainServiceTest.cancelOrder_fail_cancel_amount_error(PointDomainServiceTest.java:236)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Comparable.compareTo(Object)" because the return value of "java.util.function.Function.apply(Object)" is null
+	at java.base/java.util.Comparator.lambda$comparing$77a9974f$1(Comparator.java:473)
+	at java.base/java.util.Comparator.lambda$thenComparing$36697e65$1(Comparator.java:220)
+	at java.base/java.util.TimSort.countRunAndMakeAscending(TimSort.java:355)
+	at java.base/java.util.TimSort.sort(TimSort.java:220)
+	at java.base/java.util.Arrays.sort(Arrays.java:1308)
+	at java.base/java.util.stream.SortedOps$SizedRefSortingSink.end(SortedOps.java:353)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:510)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:575)
+	at java.base/java.util.stream.AbstractPipeline.evaluateToArrayNode(AbstractPipeline.java:260)
+	at java.base/java.util.stream.ReferencePipeline.toArray(ReferencePipeline.java:616)
+	at java.base/java.util.stream.ReferencePipeline.toArray(ReferencePipeline.java:622)
+	at java.base/java.util.stream.ReferencePipeline.toList(ReferencePipeline.java:627)
+	at com.point.system.domain.PointDomainService.cancelOrder(PointDomainService.java:92)
+	at com.point.system.domain.PointDomainServiceTest.lambda$cancelOrder_fail_cancel_amount_error$1(PointDomainServiceTest.java:237)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	... 6 more
+
+com.point.system.domain.PointDomainServiceTest.cancelOrder_success_not_expired -- Time elapsed: 0.003 s <<< ERROR!
+com.point.system.domain.exception.DomainException: 취소 금액 계산 오류
+	at com.point.system.domain.PointDomainService.cancelOrder(PointDomainService.java:119)
+	at com.point.system.domain.PointDomainServiceTest.cancelOrder_success_not_expired(PointDomainServiceTest.java:162)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+

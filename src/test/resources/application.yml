@@ -1,0 +1,38 @@
+
+spring:
+  application:
+    name: point-system
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+    show-sql: true
+    defer-datasource-initialization: true
+    database-platform: org.hibernate.dialect.H2Dialect
+
+  h2:
+    console.enabled: true
+
+  datasource:
+    url: jdbc:h2:mem:dcbapp
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+
+  sql:
+    init:
+      platform: h2
+#      data-locations: classpath:data-h2-dev.sql
+  cache:
+    type: caffeine
+    caffeine:
+      spec: maximumSize=100,expireAfterWrite=300s
+
+resilience4j:
+  thread-pool-bulkhead:
+    instances:
+      point-issue-service:
+        maxThreadPoolSize: 1
+        coreThreadPoolSize: 1
+        queueCapacity: 1

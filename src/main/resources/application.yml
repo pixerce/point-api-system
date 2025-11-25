@@ -1,0 +1,46 @@
+
+spring:
+  application:
+    name: point-system
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+    show-sql: true
+    defer-datasource-initialization: true
+    database-platform: org.hibernate.dialect.H2Dialect
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  datasource:
+#    url: jdbc:h2:file:./data/point_system_db
+    url: jdbc:h2:mem:dcbapp
+    driver-class-name: org.h2.Driver
+    username: sa
+#    password: password
+
+  sql:
+    init:
+      platform: h2
+      schema-locations: classpath:schema-h2.sql
+  cache:
+    type: caffeine
+    caffeine:
+      spec: maximumSize=100,expireAfterWrite=300s
+
+resilience4j.thread-pool-bulkhead:
+  configs:
+    default:
+      maxThreadPoolSize: 10
+      coreThreadPoolSize: 10
+      queueCapacity: 20
+  instances:
+    point-issue-service:
+      maxThreadPoolSize: 10  # 전체 트래픽의 10%를 넘지 않게 설정
+      coreThreadPoolSize: 10
+      queueCapacity: 20
+      writable-stack-trace-enabled: true
